@@ -1,0 +1,16 @@
+function objectsEqualityComparision(obj_x, obj_y) {
+	for (var i in obj_y) {
+		if (!obj_x.hasOwnProperty(i)) {
+            return false;
+        } else {
+            if (typeof(obj_y[i]) == "object") {
+                if (!objectsEqualityComparision(obj_x[i], obj_y[i])) {
+                    return false;
+                }
+            } else if (obj_y[i] != obj_x[i]) {
+                return false;
+            }
+        }
+	}
+	return true;
+}
